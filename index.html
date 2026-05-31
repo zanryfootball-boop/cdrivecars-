@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="CDriveCars – Buy trusted used and new cars in Hyderabad. Best prices, verified vehicles, easy financing."/>
+<title>CDriveCars – Drive Your Dream</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ef;
+    --red: #d62828;
+    --red-dark: #a01f1f;
+    --gray: #1c1c1c;
+    --gray-light: #2a2a2a;
+    --muted: #888;
+    --border: #2e2e2e;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .logo span { color: var(--red); }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a {
+    color: var(--muted); text-decoration: none;
+    font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--red); color: var(--white) !important;
+    padding: 10px 22px; border-radius: 4px;
+    font-weight: 500 !important; letter-spacing: 0.5px !important;
+    text-transform: none !important; font-size: 14px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.25;
+  }
+  .hero-accent {
+    position: absolute; top: 20%; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(214,40,40,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 780px; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--red); border: 1px solid var(--red);
+    padding: 6px 14px; border-radius: 2px; margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero h1 .line-red { color: var(--red); }
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 17px; color: var(--muted); max-width: 480px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-actions {
+    margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--red); color: var(--white);
+    padding: 14px 32px; border-radius: 4px;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 14px 32px; border-radius: 4px;
+    font-size: 14px; font-weight: 400; letter-spacing: 0.5px;
+    text-decoration: none; border: 1px solid var(--border); cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+  .hero-stats {
+    position: relative; z-index: 2;
+    display: flex; gap: 48px; margin-top: 64px;
+    padding-top: 32px; border-top: 1px solid var(--border);
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px; color: var(--white); letter-spacing: 1px;
+  }
+  .stat-num span { color: var(--red); }
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; }
+  .section-tag {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 56px); letter-spacing: 1px;
+    line-height: 1.05; margin-bottom: 20px;
+  }
+  .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+  /* WHY US */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px; margin-top: 60px;
+    border: 1px solid var(--border);
+  }
+  .why-card {
+    background: var(--gray); padding: 40px 32px;
+    border-right: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .why-card:last-child { border-right: none; }
+  .why-card:hover { background: var(--gray-light); }
+  .why-icon {
+    font-size: 32px; margin-bottom: 20px; display: block;
+  }
+  .why-card h3 {
+    font-size: 16px; font-weight: 500; margin-bottom: 10px; letter-spacing: 0.3px;
+  }
+  .why-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* INVENTORY */
+  #inventory { background: var(--gray); }
+  .cars-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px; margin-top: 60px;
+  }
+  .car-card {
+    background: var(--black); border: 1px solid var(--border);
+    border-radius: 6px; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .car-card:hover { transform: translateY(-4px); border-color: var(--red); }
+  .car-img {
+    height: 200px;
+    background: var(--gray-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 56px;
+    position: relative; overflow: hidden;
+  }
+  .car-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.5), transparent);
+  }
+  .car-badge {
+    position: absolute; top: 14px; left: 14px; z-index: 1;
+    background: var(--red); color: var(--white);
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px; font-weight: 500;
+  }
+  .car-info { padding: 24px; }
+  .car-name { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
+  .car-meta { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  .car-meta span { margin-right: 14px; }
+  .car-price {
+    font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+    color: var(--red); letter-spacing: 1px;
+  }
+  .car-price-sub { font-size: 12px; color: var(--muted); }
+  .car-cta {
+    display: block; margin-top: 16px;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--white); padding: 10px; border-radius: 4px;
+    text-align: center; font-size: 13px; letter-spacing: 0.5px;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .car-cta:hover { background: var(--red); border-color: var(--red); }
+
+  /* PROCESS */
+  .process-steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0; margin-top: 60px; position: relative;
+  }
+  .process-step { padding: 40px 32px; border-left: 1px solid var(--border); }
+  .process-step:first-child { border-left: none; }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 64px;
+    color: var(--border); line-height: 1; margin-bottom: 20px;
+    letter-spacing: 2px;
+  }
+  .process-step h3 { font-size: 16px; font-weight: 500; margin-bottom: 10px; }
+  .process-step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  #testimonials { background: var(--gray); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px; margin-top: 60px;
+  }
+  .testi-card {
+    background: var(--black); border: 1px solid var(--border);
+    padding: 32px; border-radius: 6px;
+  }
+  .testi-stars { color: var(--red); font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+  .testi-text { font-size: 15px; color: #ccc; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .testi-author { font-size: 13px; font-weight: 500; }
+  .testi-city { font-size: 12px; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    margin-top: 60px;
+  }
+  .contact-info h3 { font-size: 18px; font-weight: 500; margin-bottom: 24px; }
+  .contact-item {
+    display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start;
+  }
+  .contact-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .contact-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .contact-text strong { color: var(--white); display: block; font-weight: 500; }
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: #fff;
+    padding: 14px 28px; border-radius: 4px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    margin-top: 28px; transition: opacity 0.2s;
+  }
+  .wa-btn:hover { opacity: 0.88; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .form-group input, .form-group select, .form-group textarea {
+    background: var(--gray); border: 1px solid var(--border);
+    color: var(--white); padding: 12px 16px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--red);
+  }
+  .form-group select option { background: var(--gray); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    background: var(--red); color: var(--white);
+    border: none; padding: 14px 32px; border-radius: 4px;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px;
+    transition: background 0.2s; align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--red-dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray); border-top: 1px solid var(--border);
+    padding: 48px; display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+  }
+  footer .logo { font-size: 22px; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    nav ul { display: none; }
+    .hero, section { padding-left: 20px; padding-right: 20px; }
+    .hero { padding-bottom: 60px; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">C<span>Drive</span>Cars</a>
+  <ul>
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact" class="nav-cta">Enquire Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Hyderabad's Trusted Car Dealer</span>
+    <h1>Drive Your<br><span class="line-red">Dream Car.</span><br>Today.</h1>
+    <p class="hero-sub">New & pre-owned cars at honest prices. Every vehicle inspected, verified, and ready to roll.</p>
+    <div class="hero-actions">
+      <a href="#inventory" class="btn-primary">Browse Inventory</a>
+      <a href="#contact" class="btn-outline">Talk to Us</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">500<span>+</span></div>
+      <div class="stat-label">Cars Sold</div>
+    </div>
+    <div>
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">Verified Vehicles</div>
+    </div>
+    <div>
+      <div class="stat-num">4.9<span>★</span></div>
+      <div class="stat-label">Customer Rating</div>
+    </div>
+    <div>
+      <div class="stat-num">5<span>+</span></div>
+      <div class="stat-label">Years in Business</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <span class="section-tag">Why CDriveCars</span>
+  <h2 class="section-title">We Do Things<br>Differently.</h2>
+  <p class="section-sub">No hidden charges. No pressure. Just the right car at the right price — every single time.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">🔍</span>
+      <h3>100-Point Inspection</h3>
+      <p>Every car goes through a rigorous check covering engine, body, electricals, and tyres before it reaches you.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">📄</span>
+      <h3>Clean Paperwork</h3>
+      <p>RC transfer, insurance, and all documentation handled by us. You drive, we handle the rest.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">💰</span>
+      <h3>Transparent Pricing</h3>
+      <p>The price you see is the price you pay. No last-minute add-ons, no dealer fees, no surprises.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🏦</span>
+      <h3>Easy Financing</h3>
+      <p>Get loan assistance from top banks at low interest rates. Quick approval, minimal documentation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INVENTORY -->
+<section id="inventory">
+  <span class="section-tag">Current Stock</span>
+  <h2 class="section-title">Featured Cars</h2>
+  <p class="section-sub">A selection of our best available vehicles. Updated regularly — enquire early.</p>
+  <div class="cars-grid">
+
+    <div class="car-card">
+      <div class="car-img">🚗<span class="car-badge">Used</span></div>
+      <div class="car-info">
+        <div class="car-name">Maruti Swift VXI</div>
+        <div class="car-meta">
+          <span>2021</span><span>32,000 km</span><span>Petrol</span>
+        </div>
+        <div class="car-price">₹5.80 L</div>
+        <div class="car-price-sub">EMI from ₹10,200/mo</div>
+        <a href="#contact" class="car-cta">Enquire Now</a>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="car-img">🚙<span class="car-badge">Used</span></div>
+      <div class="car-info">
+        <div class="car-name">Hyundai Creta SX</div>
+        <div class="car-meta">
+          <span>2020</span><span>41,000 km</span><span>Diesel</span>
+        </div>
+        <div class="car-price">₹13.50 L</div>
+        <div class="car-price-sub">EMI from ₹22,000/mo</div>
+        <a href="#contact" class="car-cta">Enquire Now</a>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="car-img">🏎️<span class="car-badge">New</span></div>
+      <div class="car-info">
+        <div class="car-name">Tata Nexon XZ+</div>
+        <div class="car-meta">
+          <span>2024</span><span>0 km</span><span>Petrol</span>
+        </div>
+        <div class="car-price">₹15.20 L</div>
+        <div class="car-price-sub">EMI from ₹25,400/mo</div>
+        <a href="#contact" class="car-cta">Enquire Now</a>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="car-img">🚗<span class="car-badge">Used</span></div>
+      <div class="car-info">
+        <div class="car-name">Honda City ZX CVT</div>
+        <div class="car-meta">
+          <span>2022</span><span>18,000 km</span><span>Petrol</span>
+        </div>
+        <div class="car-price">₹11.90 L</div>
+        <div class="car-price-sub">EMI from ₹19,800/mo</div>
+        <a href="#contact" class="car-cta">Enquire Now</a>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="car-img">🚙<span class="car-badge">Used</span></div>
+      <div class="car-info">
+        <div class="car-name">Mahindra Scorpio N Z4</div>
+        <div class="car-meta">
+          <span>2023</span><span>12,000 km</span><span>Diesel</span>
+        </div>
+        <div class="car-price">₹18.50 L</div>
+        <div class="car-price-sub">EMI from ₹30,600/mo</div>
+        <a href="#contact" class="car-cta">Enquire Now</a>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="car-img">⚡<span class="car-badge">New</span></div>
+      <div class="car-info">
+        <div class="car-name">Tata Punch EV Creative</div>
+        <div class="car-meta">
+          <span>2024</span><span>0 km</span><span>Electric</span>
+        </div>
+        <div class="car-price">₹13.99 L</div>
+        <div class="car-price-sub">EMI from ₹23,200/mo</div>
+        <a href="#contact" class="car-cta">Enquire Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <span class="section-tag">How It Works</span>
+  <h2 class="section-title">From Browse<br>to Drive.</h2>
+  <p class="section-sub">We've made buying a car as simple as ordering online — just a few steps and you're on the road.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h3>Browse & Shortlist</h3>
+      <p>Check our inventory online or visit our showroom. Tell us your budget and preferences — we'll find the right match.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h3>Inspect & Test Drive</h3>
+      <p>Come in for a test drive at your convenience. Our team walks you through the car's full history and condition report.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h3>Finance & Paperwork</h3>
+      <p>Choose cash or EMI. We handle the loan application, RC transfer, and insurance — entirely stress-free.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h3>Drive It Home</h3>
+      <p>Collect your keys. We deliver to your doorstep anywhere in Hyderabad at no extra charge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <span class="section-tag">Real Customers</span>
+  <h2 class="section-title">What People Say.</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Bought a Creta from CDriveCars last month. The entire process was smooth — no haggling, clean RC, loan sorted in 2 days. Highly recommend."</p>
+      <div class="testi-author">Ravi Kumar</div>
+      <div class="testi-city">Kukatpally, Hyderabad</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"First time buying a used car and I was nervous. The team explained everything patiently. The car has been perfect for 6 months now."</p>
+      <div class="testi-author">Priya Sharma</div>
+      <div class="testi-city">Madhapur, Hyderabad</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Best price in the market for a 2022 Honda City. They even delivered it to my house. CDriveCars is now my go-to for all car needs."</p>
+      <div class="testi-author">Arjun Reddy</div>
+      <div class="testi-city">Gachibowli, Hyderabad</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-tag">Get In Touch</span>
+  <h2 class="section-title">Let's Find Your<br>Perfect Car.</h2>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Visit or Call Us</h3>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div class="contact-text">
+          <strong>Showroom Address</strong>
+          Plot No. 12, Auto Nagar, Balanagar,<br>Hyderabad, Telangana – 500037
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <div class="contact-text">
+          <strong>Phone</strong>
+          +91 98765 43210
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📧</span>
+        <div class="contact-text">
+          <strong>Email</strong>
+          hello@cdrivecars.in
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">🕐</span>
+        <div class="contact-text">
+          <strong>Working Hours</strong>
+          Mon–Sat: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 5:00 PM
+        </div>
+      </div>
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20a%20car%20from%20CDriveCars" target="_blank" class="wa-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.855L.057 23.5l5.79-1.519A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.027-1.382l-.36-.214-3.737.98.998-3.648-.235-.374A9.814 9.814 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Ravi Kumar" required/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>I'm Looking For</label>
+        <select>
+          <option>Used car under ₹5 lakh</option>
+          <option>Used car ₹5–10 lakh</option>
+          <option>Used car ₹10–20 lakh</option>
+          <option>New car</option>
+          <option>I want to sell my car</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (optional)</label>
+        <textarea placeholder="Tell us your preferred brand, fuel type, or any other requirement..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Enquiry →</button>
+      <div id="form-msg" style="font-size:14px;color:#4ade80;display:none;">✓ Sent! We'll call you within 2 hours.</div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo">C<span>Drive</span>Cars</a>
+  <div class="footer-links">
+    <a href="#inventory">Inventory</a>
+    <a href="#why">Why Us</a>
+    <a href="#process">How It Works</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2024 CDriveCars. All rights reserved.</div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    e.target.reset();
+    setTimeout(() => msg.style.display = 'none', 5000);
+  }
+
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.why-card, .car-card, .process-step, .testi-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
